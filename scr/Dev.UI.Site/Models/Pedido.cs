@@ -8,7 +8,7 @@ namespace Dev.UI.Site.Models
 
         public Pedido()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
     }
 }
