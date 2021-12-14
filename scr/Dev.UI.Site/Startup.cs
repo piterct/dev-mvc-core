@@ -1,3 +1,4 @@
+using Dev.UI.Site.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,8 @@ namespace Dev.UI.Site
             });
             
             services.AddControllersWithViews();
+
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
