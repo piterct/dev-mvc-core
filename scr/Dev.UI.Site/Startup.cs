@@ -1,4 +1,5 @@
 using Dev.UI.Site.Data;
+using Dev.UI.Site.Servicos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Dev.UI.Site.Servicos.OperacaoService;
 
 namespace Dev.UI.Site
 {
@@ -30,6 +32,13 @@ namespace Dev.UI.Site
             services.AddControllersWithViews();
 
             services.AddTransient<IPedidoRepository, PedidoRepository>();
+
+            services.AddTransient<IOperacaoTransient, Operacao>();
+            services.AddScoped<IOperacaoScoped, Operacao>();
+            services.AddSingleton<IOperacaoSingleton, Operacao>();
+            services.AddSingleton<IOperacaoSingletonInstance>(new Operacao(Guid.Empty));
+
+            services.AddTransient<OperacaoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
