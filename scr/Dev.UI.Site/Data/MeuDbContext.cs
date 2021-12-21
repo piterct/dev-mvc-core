@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dev.UI.Site.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dev.UI.Site.Data
 {
@@ -9,5 +10,7 @@ namespace Dev.UI.Site.Data
         {
 
         }
+
+        public DbSet<Aluno> Alunos { get; set; }
     }
 }
