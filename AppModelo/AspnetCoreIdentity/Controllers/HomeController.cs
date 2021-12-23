@@ -31,7 +31,7 @@ namespace AspnetCoreIdentity.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Gestor")]
         public IActionResult Secret()
         {
             return View();
