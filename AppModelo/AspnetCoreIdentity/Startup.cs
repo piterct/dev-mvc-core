@@ -35,6 +35,11 @@ namespace AspnetCoreIdentity
                 .AddRoles<IdentityRole>()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<AspnetCoreIdentityContext>();
+
+            services.AddAuthorization(options => 
+            {
+                options.AddPolicy("PodeExcluir", policy => policy.RequireClaim("PodeExcluir"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
