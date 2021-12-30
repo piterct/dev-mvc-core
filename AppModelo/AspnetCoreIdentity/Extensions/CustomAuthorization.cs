@@ -33,6 +33,9 @@ namespace AspnetCoreIdentity.Extensions
             }
             public void OnAuthorization(AuthorizationFilterContext context)
             {
+
+
+
                 if (!ValidarClaimsUsuario(context.HttpContext, _claim.Type, _claim.Value))
                 {
                     context.Result = new ForbidResult();

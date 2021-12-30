@@ -50,7 +50,7 @@ namespace AspnetCoreIdentity.Controllers
             return View("Secret");
         }
 
-        [ClaimsAuthorize("Home","Secret")]
+        [ClaimsAuthorize("Produtos","Ler")]
         public IActionResult ClaimsCustom()
         {
             return View("Secret");
