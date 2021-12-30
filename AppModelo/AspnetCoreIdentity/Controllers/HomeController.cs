@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using static AspnetCoreIdentity.Extensions.CustomAuthorization;
 
 namespace AspnetCoreIdentity.Controllers
 {
@@ -45,6 +46,12 @@ namespace AspnetCoreIdentity.Controllers
 
         [Authorize(Policy = "PodeEscrever")]
         public IActionResult SecretClaimGravar()
+        {
+            return View("Secret");
+        }
+
+        [ClaimsAuthorize("Home","Secret")]
+        public IActionResult ClaimsCustom()
         {
             return View("Secret");
         }
