@@ -1,4 +1,5 @@
 using AspnetCoreIdentity.Areas.Identity.Data;
+using AspnetCoreIdentity.Config;
 using AspnetCoreIdentity.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -41,7 +42,7 @@ namespace AspnetCoreIdentity
                 options.AddPolicy("PodeEscrever", policy => policy.Requirements.Add(new PermissaoNecessaria("PodeEscrever")));
             });
 
-            services.AddSingleton<IAuthorizationHandler, PermissaoNecessariaHandler>();
+            services.ResolveDependencies();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
