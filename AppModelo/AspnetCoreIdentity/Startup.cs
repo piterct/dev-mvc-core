@@ -22,6 +22,7 @@ namespace AspnetCoreIdentity
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllersWithViews();
 
             services.AddDbContext<AspnetCoreIdentityContext>(options =>
