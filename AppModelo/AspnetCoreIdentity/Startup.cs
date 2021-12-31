@@ -26,13 +26,7 @@ namespace AspnetCoreIdentity
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<AspnetCoreIdentityContext>(options =>
-                  options.UseSqlServer(Configuration.GetConnectionString("AspnetCoreIdentityContextConnection")));
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddDefaultUI()
-                .AddEntityFrameworkStores<AspnetCoreIdentityContext>();
+            services.AddIdentityConfig(Configuration);
 
             services.AddAuthorizationConfig();
 
