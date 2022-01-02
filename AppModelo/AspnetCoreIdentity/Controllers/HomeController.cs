@@ -1,19 +1,17 @@
 ﻿using AspnetCoreIdentity.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using KissLog;
 using static AspnetCoreIdentity.Extensions.CustomAuthorization;
+using Microsoft.Extensions.Logging;
 
 namespace AspnetCoreIdentity.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -24,6 +22,7 @@ namespace AspnetCoreIdentity.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            _logger.LogInformation("Usuario acessou a home!");
             return View();
         }
 

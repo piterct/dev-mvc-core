@@ -1,9 +1,6 @@
-﻿using AspnetCoreIdentity.Areas.Identity.Data;
-using AspnetCoreIdentity.Extensions;
+﻿using AspnetCoreIdentity.Extensions;
+using KissLog;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AspnetCoreIdentity.Config
@@ -13,21 +10,10 @@ namespace AspnetCoreIdentity.Config
         public static IServiceCollection ResolveDependencies(this IServiceCollection services)
         {
             services.AddSingleton<IAuthorizationHandler, PermissaoNecessariaHandler>();
+            services.AddScoped((context) => Logger.Factory.Get());
 
             return services;
         }
 
-        public static IServiceCollection AddIdentityConfig(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddDbContext<AspnetCoreIdentityContext>(options =>
-                  options.UseSqlServer(configuration.GetConnectionString("AspnetCoreIdentityContextConnection")));
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddDefaultUI()
-                .AddEntityFrameworkStores<AspnetCoreIdentityContext>();
-
-            return services;
-        }
     }
 }

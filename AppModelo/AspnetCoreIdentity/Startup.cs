@@ -1,4 +1,8 @@
 using AspnetCoreIdentity.Config;
+using KissLog;
+using KissLog.AspNetCore;
+using KissLog.CloudListeners.Auth;
+using KissLog.CloudListeners.RequestLogsListener;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,10 +32,12 @@ namespace AspnetCoreIdentity
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddIdentityConfig(Configuration);
             services.AddAuthorizationConfig();
             services.ResolveDependencies();
+            services.AddConfigKissLog();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,6 +52,9 @@ namespace AspnetCoreIdentity
                 app.UseStatusCodePagesWithRedirects("/erro/{0}");
                 app.UseHsts();
             }
+
+            app.UseKissLogMiddleware(options => LogConfig.ConfigureKissLog(options, Configuration));
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -67,5 +76,6 @@ namespace AspnetCoreIdentity
 
             });
         }
+   
     }
 }
