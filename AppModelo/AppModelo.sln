@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dev.UI.Site", "..\scr\Dev.UI.Site\Dev.UI.Site.csproj", "{57AB1D1F-566D-44F6-AA56-77A03F665232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspnetCoreIdentity", "AspnetCoreIdentity\AspnetCoreIdentity.csproj", "{226BC117-3061-449D-8206-50A7A9A8B257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetCoreIdentity", "AspnetCoreIdentity\AspnetCoreIdentity.csproj", "{226BC117-3061-449D-8206-50A7A9A8B257}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev.Mvc.Simples", "Dev.Mvc.Simples\Dev.Mvc.Simples.csproj", "{7CFDF4CE-F0C2-4BFF-BC5F-E6A60320DB9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{226BC117-3061-449D-8206-50A7A9A8B257}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{226BC117-3061-449D-8206-50A7A9A8B257}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{226BC117-3061-449D-8206-50A7A9A8B257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CFDF4CE-F0C2-4BFF-BC5F-E6A60320DB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CFDF4CE-F0C2-4BFF-BC5F-E6A60320DB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CFDF4CE-F0C2-4BFF-BC5F-E6A60320DB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CFDF4CE-F0C2-4BFF-BC5F-E6A60320DB9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
