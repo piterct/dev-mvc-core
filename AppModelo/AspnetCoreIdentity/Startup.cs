@@ -1,4 +1,5 @@
 using AspnetCoreIdentity.Config;
+using AspnetCoreIdentity.Extensions;
 using KissLog;
 using KissLog.AspNetCore;
 using KissLog.CloudListeners.Auth;
@@ -33,11 +34,12 @@ namespace AspnetCoreIdentity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-            services.AddControllersWithViews();
             services.AddIdentityConfig(Configuration);
             services.AddAuthorizationConfig();
             services.ResolveDependencies();
             services.AddConfigKissLog();
+            services.AddControllersWithViews(options =>
+            options.Filters.Add(typeof(AuditoriaFilter)));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -76,6 +78,6 @@ namespace AspnetCoreIdentity
 
             });
         }
-   
+
     }
 }
