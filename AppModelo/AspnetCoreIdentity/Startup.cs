@@ -9,12 +9,17 @@ namespace AspnetCoreIdentity
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
+        public Startup(IWebHostEnvironment webHostingEnvironment)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(webHostingEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{webHostingEnvironment.EnvironmentName}.json", true, true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
