@@ -1,6 +1,13 @@
-﻿namespace Dev.Mvc.Simples.Models
+﻿using System;
+
+namespace Dev.Mvc.Simples.Models
 {
-    public class Entity
+    public abstract class Entity
     {
+        protected Entity()
+        {
+            Id = Guid.NewGuid();
+        }
+        public Guid Id { get; set; }
     }
 }

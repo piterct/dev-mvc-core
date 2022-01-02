@@ -1,6 +1,6 @@
 ﻿namespace Dev.Mvc.Simples.Models
 {
-    public class Produto : Entity
+    public class Endereco : Entity
     {
     }
 }
