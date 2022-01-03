@@ -48,7 +48,7 @@ namespace Dev.Mvc.Simples.Controllers
         // GET: Produtos/Create
         public IActionResult Create()
         {
-            ViewData["FornecedorId"] = new SelectList(_context.Fornecedores, "Id", "Documento");
+            ViewData["FornecedorId"] = new SelectList(_context.Fornecedores, "Id", "Nome");
             return View();
         }
 
@@ -57,16 +57,15 @@ namespace Dev.Mvc.Simples.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FornecedorId,Nome,Descricao,Imagem,Valor,DataCadastro,Ativo,Id")] Produto produto)
+        public async Task<IActionResult> Create(Produto produto)
         {
             if (ModelState.IsValid)
             {
-                produto.Id = Guid.NewGuid();
                 _context.Add(produto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FornecedorId"] = new SelectList(_context.Fornecedores, "Id", "Documento", produto.FornecedorId);
+            ViewData["FornecedorId"] = new SelectList(_context.Fornecedores, "Id", "Nome", produto.FornecedorId);
             return View(produto);
         }
 
@@ -83,7 +82,7 @@ namespace Dev.Mvc.Simples.Controllers
             {
                 return NotFound();
             }
-            ViewData["FornecedorId"] = new SelectList(_context.Fornecedores, "Id", "Documento", produto.FornecedorId);
+            ViewData["FornecedorId"] = new SelectList(_context.Fornecedores, "Id", "Nome", produto.FornecedorId);
             return View(produto);
         }
 
@@ -92,7 +91,7 @@ namespace Dev.Mvc.Simples.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("FornecedorId,Nome,Descricao,Imagem,Valor,DataCadastro,Ativo,Id")] Produto produto)
+        public async Task<IActionResult> Edit(Guid id, Produto produto)
         {
             if (id != produto.Id)
             {
@@ -119,7 +118,7 @@ namespace Dev.Mvc.Simples.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FornecedorId"] = new SelectList(_context.Fornecedores, "Id", "Documento", produto.FornecedorId);
+            ViewData["FornecedorId"] = new SelectList(_context.Fornecedores, "Id", "Nome", produto.FornecedorId);
             return View(produto);
         }
 
