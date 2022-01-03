@@ -24,8 +24,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="TipoFornecedor" class="control-label"></label>
-                <select asp-for="TipoFornecedor" class="form-control"></select>
-                <span asp-validation-for="TipoFornecedor" class="text-danger"></span>
+                <div>
+                    <input type="radio" value="1" asp-for="TipoFornecedor" checked="@((int)Model.TipoFornecedor == 1)" /> Pessoa Física
+                    <input type="radio" value="2" asp-for="TipoFornecedor" checked="@((int)Model.TipoFornecedor == 2)" /> Pessoa Jurídica
+                </div>
+
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -45,5 +48,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }
