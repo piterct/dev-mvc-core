@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Dev.Mvc.Simples.Data;
 using Dev.Mvc.Simples.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dev.Mvc.Simples.Controllers
 {
+    [Authorize]
     public class FornecedoresController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -19,12 +21,14 @@ namespace Dev.Mvc.Simples.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         // GET: Fornecedores
         public async Task<IActionResult> Index()
         {
             return View(await _context.Fornecedores.ToListAsync());
         }
 
+        [AllowAnonymous]
         // GET: Fornecedores/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
